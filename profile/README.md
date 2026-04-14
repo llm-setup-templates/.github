@@ -9,7 +9,7 @@ Each template is a **GitHub Template Repository** — click **Use this template*
 | Template | Language / Stack | Primary Use Case |
 |---|---|---|
 | [**typescript-template**](https://github.com/llm-setup-templates/typescript-template) | TypeScript 5 · Node 20 · FSD 5-layer | Next.js / Node services with strict FSD architecture, Husky + commitlint + lint-staged |
-| [**spring-template**](https://github.com/llm-setup-templates/spring-template) | Java 21 (LTS) · Spring Boot 3 · Gradle KTS | 3-layer Spring apps (Controller → Service → Repository), ArchUnit-enforced, Docker + ECS Fargate ready |
+| [**spring-template**](https://github.com/llm-setup-templates/spring-template) | Java 17 (LTS) · Spring Boot 3 · Gradle KTS (Foojay toolchain auto-provision) | 3-layer Spring apps (Controller → Service → Repository), ArchUnit-enforced, Docker + ECS Fargate ready |
 | [**python-template**](https://github.com/llm-setup-templates/python-template) | Python 3.13 · uv · Ruff · basedpyright | 3 archetypes: FastAPI service, CLI library, data-science pipeline — all with strict typing and pre-commit |
 
 ## What's inside every template
