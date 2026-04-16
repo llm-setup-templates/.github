@@ -8,9 +8,9 @@ Each template is a **GitHub Template Repository** — click **Use this template*
 
 | Template | Language / Stack | Primary Use Case |
 |---|---|---|
-| [**typescript-template**](https://github.com/llm-setup-templates/typescript-template) | TypeScript 5 · Node 20 · FSD 5-layer | Next.js / Node services with strict FSD architecture, Husky + commitlint + lint-staged |
-| [**spring-template**](https://github.com/llm-setup-templates/spring-template) | Java 17 (LTS) · Spring Boot 3 · Gradle KTS (Foojay toolchain auto-provision) | 3-layer Spring apps (Controller → Service → Repository), ArchUnit-enforced, Docker + ECS Fargate ready |
-| [**python-template**](https://github.com/llm-setup-templates/python-template) | Python 3.13 · uv · Ruff · basedpyright | 3 archetypes: FastAPI service, CLI library, data-science pipeline — all with strict typing and pre-commit |
+| [**typescript-template**](https://github.com/llm-setup-templates/typescript-template) | TypeScript 5 · Node 20 · FSD 5-layer · Dependency Cruiser | Next.js with strict FSD, Zod validation, infra isolation (DB driver boundary), Husky + commitlint |
+| [**spring-template**](https://github.com/llm-setup-templates/spring-template) | Java 17 (LTS) · Spring Boot 3 · Gradle KTS · ArchUnit 10 rules | Team-dodn package naming, ApiResponse\<T\> + @ControllerAdvice, multi-module migration ready |
+| [**python-template**](https://github.com/llm-setup-templates/python-template) | Python 3.13 · uv · Ruff · basedpyright · Import Linter | FastAPI exception hierarchy, Loguru structured logging, 3 archetypes (FastAPI/CLI/Data-science) |
 
 ## What's inside every template
 
@@ -23,10 +23,13 @@ Each template is a **GitHub Template Repository** — click **Use this template*
 
 ## Design principles
 
-1. **Fail-fast verification loop** — format → typecheck → static-analysis → lint → test → build. Agents may not declare a task complete until the full loop passes.
-2. **Git safety gate** — inline bash block in `SETUP.md` Phase 8.1 blocks pushes on `main`, non-conventional commits, or dirty working trees.
-3. **Placeholder discipline** — Mustache `{{UPPERCASE_KEY}}` for every user-input value; `validate.sh` allowlist marks intentional runtime placeholders so leaks are caught.
-4. **No migration lock-in** — every template is language-generic. Mind Signal / CheckMate / downstream-specific context has been stripped.
+1. **Fail-fast verification loop** — format → typecheck → architecture boundary → lint → test → build. Agents may not declare a task complete until the full loop passes.
+2. **Framework-native conventions** — Spring uses `ApiResponse<T>` wrapper, FastAPI uses `response_model=Schema` direct return, Next.js uses `NextResponse.json()` direct return. No cross-framework pattern forcing.
+3. **Architecture boundary enforcement** — ArchUnit (Spring), Import Linter (Python), Dependency Cruiser (TypeScript) catch layer violations at build/CI time.
+4. **AI Agent Hard Constraints** — each template's `architecture.md` contains `[CRITICAL]` rules that prevent agents from bypassing response standards, layer boundaries, and observability isolation.
+5. **Git safety gate** — inline bash block in `SETUP.md` Phase 8.1 blocks pushes on `main`, non-conventional commits, or dirty working trees.
+6. **Placeholder discipline** — Mustache `{{UPPERCASE_KEY}}` for every user-input value; `validate.sh` allowlist marks intentional runtime placeholders so leaks are caught.
+7. **No migration lock-in** — every template is language-generic. Downstream-specific context has been stripped.
 
 ## License
 
